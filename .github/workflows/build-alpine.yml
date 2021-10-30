@@ -20,4 +20,5 @@ jobs:
     - name: Prepare v3.14
       run: ./prepare-branch.sh prepare v3.14
       working-directory: docker-alpine
-
+    - name: Build Container
+      run: sh -c "cd /tmp/docker-brew-alpine-*/x86_64 && docker build -t alpine:latest . "
