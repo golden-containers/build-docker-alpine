@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  schedule:
+    - cron: '0 15 * * *'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cache-alpine-3-14-1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Build the Docker image
+      run: docker build docker-alpine --file docker-alpine/Dockerfile 
+    - name: Log in to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Publish the Docker image
+      run: docker push ghcr.io/jgowdy/alpine:latest
