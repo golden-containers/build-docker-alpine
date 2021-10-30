@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: true
     - name: Install bats
-      run: apt-get install bats -y
+      run: sudo apt-get install bats -y
     - name: Prepare v3.14
       run: ./prepare-branch.sh prepare v3.14
       working-directory: docker-alpine
