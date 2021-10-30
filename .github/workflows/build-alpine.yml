@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  cache-alpine-3-14-1:
+  build-alpine:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
