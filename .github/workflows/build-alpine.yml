@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: true
     - name: Build the Docker image
-      run: docker build docker-alpine --file docker-alpine/Dockerfile 
+      run: docker build docker-alpine --file docker-alpine/Dockerfile --tag alpine
     - name: Log in to registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Publish the Docker image
