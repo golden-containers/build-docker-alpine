@@ -1,3 +1,0 @@
-[submodule "docker-alpine"]
-	path = docker-alpine
-	url = git@github.com:alpinelinux/docker-alpine.git
