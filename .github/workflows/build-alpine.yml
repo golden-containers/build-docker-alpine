@@ -21,4 +21,8 @@ jobs:
       run: ./prepare-branch.sh prepare v3.14
       working-directory: docker-alpine
     - name: Build Container
-      run: sh -c "cd /tmp/docker-brew-alpine-*/x86_64 && docker build -t alpine:latest . "
+      run: sh -c "cd /tmp/docker-brew-alpine-*/x86_64 && docker build --tag ghcr.io/jgowdy/jgowdy-alpine:latest . "
+    - name: Log in to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Publish the Docker image
+      run: docker push ghcr.io/jgowdy/jgowdy-alpine:latest
