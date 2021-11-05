@@ -17,6 +17,7 @@ jobs:
       run: ./checkout-alpine-amd64.sh
     - name: Prepare branch
       run: ./prepare-branch.sh 3.14.1
+      working-directory: ./docker-alpine/
     - name: Build image
       run: docker build docker-alpine/x86_64 --tag ghcr.io/jgowdy/alpine:latest --tag ghcr.io/jgowdy/alpine:3.14.1
     - name: Log in to registry
