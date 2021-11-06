@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -xe
 
 rm -rf docker-alpine
 git clone --depth 1 --branch v3.14 --filter=blob:none --sparse https://github.com/alpinelinux/docker-alpine.git
