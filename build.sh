@@ -17,7 +17,5 @@ git sparse-checkout set x86_64
 docker build x86_64 --tag ghcr.io/golden-containers/alpine:latest --tag ghcr.io/golden-containers/alpine:3.14
 
 # Push
- 
-docker push ghcr.io/golden-containers/alpine:latest
 
-docker push ghcr.io/golden-containers/alpine:3.14
+docker push ghcr.io/golden-containers/alpine -a
