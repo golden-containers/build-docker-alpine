@@ -15,12 +15,18 @@ git sparse-checkout set x86_64
 # Transform
 
 # This sed syntax is GNU sed specific
-[ -z $(command -v gsed) ] && GNU_SED=sed || GNU_SED=gsed
+# [ -z $(command -v gsed) ] && GNU_SED=sed || GNU_SED=gsed
 
 # Build
 
-docker build x86_64/ --platform linux/amd64 --tag ghcr.io/golden-containers/alpine:latest --tag ghcr.io/golden-containers/alpine:3.14 --label ${1:-DEBUG=TRUE}
+[ -z "${1:-}" ] && BUILD_LABEL_ARG="" || BUILD_LABEL_ARG=" --label \"${1}\" "
+
+BUILD_PLATFORM=" --platform linux/amd64 "
+GCI_URL="ghcr.io/golden-containers"
+BUILD_ARGS=" ${BUILD_LABEL_ARG} ${BUILD_PLATFORM} "
+
+docker build x86_64/ --tag ${GCI_URL}/alpine:latest --tag ${GCI_URL}/alpine:3.14 ${BUILD_ARGS}
 
 # Push
 
-docker push ghcr.io/golden-containers/alpine -a
+docker push ${GCI_URL}/alpine -a
