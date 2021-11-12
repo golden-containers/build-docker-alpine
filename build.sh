@@ -12,6 +12,10 @@ cd docker-alpine
 git sparse-checkout init --cone
 git sparse-checkout set x86_64
 
+# Transform
+
+echo "LABEL $1" >> x86_64/Dockerfile
+
 # Build
 
 docker build x86_64 --tag ghcr.io/golden-containers/alpine:latest --tag ghcr.io/golden-containers/alpine:3.14
