@@ -14,6 +14,9 @@ git sparse-checkout set x86_64
 
 # Transform
 
+# This sed syntax is GNU sed specific
+[ -z $(command -v gsed) ] && GNU_SED=sed || GNU_SED=gsed
+
 # Build
 
 docker build x86_64/ --tag ghcr.io/golden-containers/alpine:latest --tag ghcr.io/golden-containers/alpine:3.14 --label ${1:-DEBUG=TRUE}
