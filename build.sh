@@ -14,7 +14,7 @@ git sparse-checkout set x86_64
 
 # Transform
 
-echo "LABEL $1" >> x86_64/Dockerfile
+echo "LABEL ${1:-DEBUG=TRUE}" >> x86_64/Dockerfile
 
 # Build
 
